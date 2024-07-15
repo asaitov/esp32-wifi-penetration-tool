@@ -1,8 +1,5 @@
 /**
- * @file attack_method.h
- * @author risinek (risinek@gmail.com)
- * @date 2021-04-07
- * @copyright Copyright (c) 2021
+ * @file
  * 
  * @brief Provides interface for common methods used in various attacks 
  */

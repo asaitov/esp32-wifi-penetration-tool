@@ -1,8 +1,5 @@
 /**
- * @file frame_analyzer_types.h
- * @author risinek (risinek@gmail.com)
- * @date 2021-04-05
- * @copyright Copyright (c) 2021
+ * @file
  * 
  * @brief Provides structures and constants based on various standards like 802.11, 802.1X etc...
  */

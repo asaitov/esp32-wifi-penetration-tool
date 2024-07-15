@@ -1,8 +1,5 @@
 /**
- * @file ap_scanner.h
- * @author risinek (risinek@gmail.com)
- * @date 2021-04-05
- * @copyright Copyright (c) 2021
+ * @file
  * 
  * @brief Provides an interface for AP scanning functionality.
  */

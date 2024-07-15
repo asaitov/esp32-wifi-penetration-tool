@@ -1,8 +1,5 @@
 /**
- * @file attack_handshake.c
- * @author risinek (risinek@gmail.com)
- * @date 2021-04-03
- * @copyright Copyright (c) 2021
+ * @file
  * 
  * @brief Implements handshake attacks and different available methods.
  */

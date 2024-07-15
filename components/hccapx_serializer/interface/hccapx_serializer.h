@@ -1,8 +1,5 @@
 /**
- * @file hccapx_serializer.h
- * @author risinek (risinek@gmail.com)
- * @date 2021-04-05
- * @copyright Copyright (c) 2021
+ * @file
  * 
  * @brief Provides interface to generate HCCAPX formatted binary from raw frame bytes 
  */

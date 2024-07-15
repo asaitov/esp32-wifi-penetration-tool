@@ -1,8 +1,5 @@
 /**
- * @file attack.c
- * @author risinek (risinek@gmail.com)
- * @date 2021-04-02
- * @copyright Copyright (c) 2021
+ * @file
  * 
  * @brief Implements common attack wrapper.
  */
