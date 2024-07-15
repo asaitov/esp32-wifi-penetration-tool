@@ -46,11 +46,11 @@ static void pmkid_exit_condition_handler(void *args, esp_event_base_t event_base
         pmkid_item_count++;
     }
 
-    // MAC_STA + MAC_AP + SSID size + SSID + PMKID * count
+    // MAC_AP + MAC_STA + SSID size + SSID + PMKID * count
     char *content = attack_alloc_result_content(6 + 6 + 1 + strlen((char *) ap_record->ssid) + (pmkid_item_count * 16));
-    wifictl_get_sta_mac((uint8_t *) content);
-    content += 6;
     memcpy(content, ap_record->bssid, 6);
+    content += 6;
+    wifictl_get_sta_mac((uint8_t *) content);
     content += 6;
     content[0] = strlen((char *) ap_record->ssid);
     content += 1;
