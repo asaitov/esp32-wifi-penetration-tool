@@ -57,11 +57,11 @@ static void data_frame_handler(void *args, esp_event_base_t event_base, int32_t 
     }
 
     if(search_type == SEARCH_PMKID){
-        pmkid_item_t *pmkid_items;
-        if((pmkid_items = parse_pmkid(eapol_key_packet)) == NULL){
-            return;
+        if (eapol_key_packet->key_information.key_ack && !eapol_key_packet->key_information.key_mic) {
+            ESP_LOGD(TAG, "Received EAPOL-Key message #1");
+            pmkid_item_t *pmkid_items = parse_pmkid(eapol_key_packet);
+            ESP_ERROR_CHECK(esp_event_post(FRAME_ANALYZER_EVENTS, DATA_FRAME_EVENT_PMKID, &pmkid_items, sizeof(pmkid_item_t *), portMAX_DELAY));
         }
-        ESP_ERROR_CHECK(esp_event_post(FRAME_ANALYZER_EVENTS, DATA_FRAME_EVENT_PMKID, &pmkid_items, sizeof(pmkid_item_t *), portMAX_DELAY));
         return;
     }
 }

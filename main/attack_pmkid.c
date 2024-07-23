@@ -41,9 +41,14 @@ static void pmkid_exit_condition_handler(void *args, esp_event_base_t event_base
     pmkid_item_t *pmkid_item_head = *(pmkid_item_t **) event_data;
     // count how many PMKIDs in the list
     pmkid_item_t *pmkid_item = pmkid_item_head;
-    unsigned pmkid_item_count = 1; 
-    while((pmkid_item = pmkid_item->next) != NULL){
+    unsigned pmkid_item_count = 0; 
+    while (pmkid_item) {
         pmkid_item_count++;
+        pmkid_item = pmkid_item->next;
+    }
+
+    if (!pmkid_item_count) {
+        ESP_LOGI(TAG, "No PMKID found in frames");
     }
 
     // MAC_AP + MAC_STA + SSID size + SSID + PMKID * count
@@ -59,15 +64,15 @@ static void pmkid_exit_condition_handler(void *args, esp_event_base_t event_base
 
     // copy PMKIDs into continuous memory into "content" in status 
     pmkid_item = pmkid_item_head;
-    do {
+    while (pmkid_item != NULL) {
         pmkid_item_head = pmkid_item;
         memcpy(content, pmkid_item_head, 16);
         content += 16;
         pmkid_item = pmkid_item->next;
         free(pmkid_item_head);
-    } while(pmkid_item != NULL);
+    }
 
-    ESP_LOGD(TAG, "PMKID attack finished");
+    ESP_LOGD(TAG, "PMKID attack stopped");
 }
 
 void attack_pmkid_start(attack_config_t *attack_config){

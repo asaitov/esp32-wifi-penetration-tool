@@ -283,6 +283,9 @@
                 pmkid = "";
             }
         }
+        if (pmkid_cnt == 0) {
+            document.getElementById("result-content").innerHTML += "PMKID attack is impossible for this AP<br>";
+        }
 
     }
     function resultHandshake(attack_content, attack_content_size){

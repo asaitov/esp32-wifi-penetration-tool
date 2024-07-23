@@ -18,6 +18,7 @@ static attack_dos_methods_t method = -1;
 
 void attack_dos_start(attack_config_t *attack_config) {
     ESP_LOGI(TAG, "Starting DoS attack...");
+    wifictl_set_channel(attack_config->ap_record->primary);
     method = attack_config->method;
     switch(method){
         case ATTACK_DOS_METHOD_BROADCAST:
